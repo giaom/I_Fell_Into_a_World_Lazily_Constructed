@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 1 – A Flicker</title>
+
+    <!-- Link to the main stylesheet for page styles -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS -->
+
+    <!-- Script files for game functionality and local storage -->
+    <script defer src="js/game.js"></script>
+    <script defer src="js/localStorage.js"></script>
+</head>
+
+<body>
+
+    <!-- Header section containing chapter title and control buttons -->
+    <header class="chapter-header">
+        <h1>Prologue: A Flicker</h1>
+
+        <!-- Button to go back to the homepage -->
+        <button id="backHome" onclick="goHome()">Home</button>
+
+        <!-- Pause button in top right corner -->
+        <button id="pauseBtn" onclick="togglePause()">Pause</button>
+    </header>
+
+    <!-- Main content area -->
+    <main class="chapter-container">
+
+        <!-- Left section: Story dialogue and navigation -->
+        <section class="story-box">
+            <!-- Dialogue text dynamically updated -->
+            <div id="dialogueText">
+                <!-- Dialogue content will go here -->
+            </div>
+
+            <!-- Navigation buttons to move through the story -->
+            <div class="nav-buttons">
+                <button id="prevBtn" onclick="prevLine()">◀ Back</button>
+                <button id="nextBtn" onclick="nextLine()">Next ▶</button>
+            </div>
+        </section>
+
+        <!-- Right section: Displaying code snippets -->
+        <aside class="code-box">
+            <pre id="codeSnippet">
+        <!-- C++ code snippets will be populated here dynamically -->
+      </pre>
+        </aside>
+
+    </main>
+
+    <!-- Pause overlay that appears when the game is paused -->
+    <div id="pauseOverlay" class="overlay" style="display: none;">
+        <div class="pause-icon">
+            <p>Game Paused</p>
+            <!-- Button to unpause the game -->
+            <button onclick="togglePause()">Unpause</button>
+        </div>
+    </div>
+
+    <div class="my-div">Content</div> <!-- Add a class for styling -->
+
+</body>
+
+</html>
