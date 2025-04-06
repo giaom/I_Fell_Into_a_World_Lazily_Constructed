@@ -1,237 +1,53 @@
-/* ================================
-   GLOBAL STYLES (Shared Across Pages)
-=================================== */
-/* Basic styles for body to set background, text color, font, and remove default margin */
 body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    font-family: 'Inter', sans-serif;
-    /* Clean and modern font */
-    background-color: #111;
-    /* Dark background color for a night-time feel */
-    color: #f5f5f5;
-    /* Light text for contrast */
+    padding: 0;
+    background: #1e1e1e;
+    color: #fff;
 }
 
-/* General button styling */
+.home-screen {
+    text-align: center;
+    margin-top: 20%;
+}
+
 button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
     cursor: pointer;
-    /* Change cursor to pointer to indicate it's clickable */
-    font-size: 1rem;
-    /* Set base font size */
-    padding: 0.5em 1em;
-    /* Add padding to make buttons larger and more clickable */
-    background-color: #333;
-    /* Dark background for buttons */
-    color: #f5f5f5;
-    /* Light text on buttons */
-    border: none;
-    /* Remove default border */
-    border-radius: 5px;
-    /* Rounded corners */
-    transition: background-color 0.3s ease;
-    /* Smooth background color change on hover */
 }
 
-/* Button hover effect */
-button:hover {
-    background-color: #555;
-    /* Slightly lighter shade when hovering over the button */
-}
-
-/* ================================
-     HOMEPAGE STYLES
-  =================================== */
-/* Main container of the homepage with centered content */
-.home-container {
+.game-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 3rem 1rem;
-    /* Vertical padding and some horizontal padding */
-    min-height: 100vh;
-    /* Ensure it takes full height of the viewport */
-    justify-content: center;
-    /* Vertically center the content */
-    text-align: center;
-    /* Center the text */
+    position: relative;
+    height: 100vh;
 }
 
-/* Title on the homepage */
-.home-title {
-    font-size: 2.5rem;
-    /* Large font for the title */
-    margin-bottom: 2rem;
-    /* Space below the title */
+.scene-bg {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
 }
 
-/* Unordered list for chapters */
-.chapter-list {
-    list-style: none;
-    /* Remove default list bullets */
-    padding: 0;
-    /* Remove padding */
-}
-
-/* List item for each chapter button */
-.chapter-list li {
-    margin: 1rem 0;
-    /* Space between each chapter button */
-}
-
-/* Style for the chapter buttons */
-.chapter-button {
-    font-size: 1.25rem;
-    /* Slightly larger font size for chapter buttons */
-    padding: 0.75rem 1.5rem;
-    /* Button padding for better clickability */
-}
-
-/* ================================
-     CHAPTER 1 STYLES (Scene Viewer)
-  =================================== */
-/* Header section for chapter title and control buttons */
-.chapter-header {
-    display: flex;
-    justify-content: space-between;
-    /* Space out the title and buttons */
-    align-items: center;
-    /* Vertically center the items */
-    padding: 10px;
-    /* Padding inside the header */
-    background-color: #222;
-    /* Dark background for the header */
-    color: white;
-    /* White text in the header */
-}
-
-/* Title of the current chapter */
-.chapter-header h1 {
-    margin: 0;
-    /* Remove default margin */
-    font-size: 1.5rem;
-    /* Medium-sized title */
-}
-
-/* Back home button */
-#backHome {
-    padding: 5px 15px;
-    /* Padding around the button */
-    background-color: #444;
-    /* Darker button color */
-    border: none;
-    /* Remove border */
-    cursor: pointer;
-    /* Pointer cursor on hover */
-    font-size: 1rem;
-    /* Font size for the button */
-    color: white;
-    /* White text color */
-}
-
-/* Pause button */
-#pauseBtn {
-    padding: 5px 10px;
-    /* Padding for the pause button */
-    background-color: #444;
-    /* Dark background color */
-    border: none;
-    /* Remove border */
-    cursor: pointer;
-    /* Pointer cursor on hover */
-    font-size: 1rem;
-    /* Font size for the pause button */
-    color: white;
-    /* White text on button */
-}
-
-/* Main container for chapter content, split into two sections */
-.chapter-container {
-    display: flex;
-    justify-content: space-between;
-    /* Space out the two sections (story and code) */
+.dialogue-box {
+    width: 80%;
+    background: rgba(0, 0, 0, 0.8);
     padding: 20px;
-    /* Padding around the container */
-}
-
-/* Story section box */
-.story-box {
-    width: 70%;
-    /* Take up 70% of the available space */
-    background-color: #f0f0f0;
-    /* Light background for story section */
-    padding: 20px;
-    /* Padding inside the box */
-    border-radius: 10px;
-    /* Rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Soft shadow for the box */
-}
-
-/* Code section box */
-.code-box {
-    width: 25%;
-    /* Take up 25% of the available space */
-    background-color: #333;
-    /* Dark background for code section */
-    color: #dcdcdc;
-    /* Light text color for code */
-    padding: 20px;
-    /* Padding inside the box */
-    border-radius: 10px;
-    /* Rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Soft shadow for the box */
-}
-
-/* Navigation buttons for story progress */
-.nav-buttons {
-    display: flex;
-    justify-content: space-between;
-    /* Space out the previous/next buttons */
-    margin-top: 10px;
-    /* Space between the dialogue text and buttons */
-}
-
-/* ================================
-     PAUSE OVERLAY STYLES
-  =================================== */
-/* Overlay for when the game is paused */
-#pauseOverlay {
-    position: fixed;
-    /* Fixed position on the screen */
-    top: 0;
-    left: 0;
-    right: 0;
+    position: absolute;
     bottom: 0;
-    /* Full screen coverage */
-    background: rgba(0, 0, 0, 0.7);
-    /* Semi-transparent dark background */
-    display: flex;
-    /* Flexbox to center the pause message */
-    justify-content: center;
-    /* Center horizontally */
-    align-items: center;
-    /* Center vertically */
-    z-index: 1000;
-    /* Ensure it appears above all other content */
+    border-top: 2px solid #ccc;
 }
 
-/* Styling for the pause message box */
-.pause-icon {
-    background: white;
-    /* White background for the pause box */
-    padding: 30px;
-    /* Padding inside the pause box */
-    border-radius: 10px;
-    /* Rounded corners */
-    text-align: center;
-    /* Center the text */
-}
-
-/* Pause message text */
-.my-div { 
-    /* Add your styles here */
-    background-color: lightblue;
-    padding: 10px;
-    border: 1px solid black;
+#code-snippet {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #111;
+    padding: 15px;
+    font-family: monospace;
+    border: 1px solid #666;
+    max-width: 300px;
 }

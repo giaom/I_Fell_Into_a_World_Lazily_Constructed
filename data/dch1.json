@@ -1,0 +1,73 @@
+{
+    "scene": "forest",
+    "dialogue": [
+        {
+            "id": "start",
+            "speaker": "Narrator",
+            "text": "You were falling asleep at your desk...",
+            "background": "desk.png",
+            "next": "crash"
+        },
+        {
+            "id": "crash",
+            "speaker": "Narrator",
+            "text": "And opened somewhere else. Rain falls like static.",
+            "code": "for (int i = 0; i < people.size(); i++) { process(people[i]); }",
+            "background": "wagon_crash.png",
+            "next": "elyse_intro"
+        },
+        {
+            "id": "elyse_intro",
+            "speaker": "???",
+            "text": "You okay? You fell from the sky.",
+            "next": "player_choice"
+        },
+        {
+            "id": "player_choice",
+            "choices": [
+                {
+                    "text": "Who are you?",
+                    "next": "elyse_name"
+                },
+                {
+                    "text": "Where am I?",
+                    "next": "elyse_place"
+                },
+                {
+                    "text": "...",
+                    "next": "elyse_silent"
+                }
+            ]
+        },
+        {
+            "id": "elyse_name",
+            "speaker": "Elyse",
+            "text": "I'm Elyse. You're lucky I found you.",
+            "next": "continue"
+        },
+        {
+            "id": "elyse_place",
+            "speaker": "Elyse",
+            "text": "You're in the Verdant Wilds, near the borderlands.",
+            "next": "continue"
+        },
+        {
+            "id": "elyse_silent",
+            "speaker": "Elyse",
+            "text": "...Right. Maybe you're still dizzy.",
+            "next": "continue"
+        },
+        {
+            "id": "continue",
+            "speaker": "System",
+            "code": "Entity* stranger = new Entity(\"unknown\", recovered);",
+            "next": "end"
+        },
+        {
+            "id": "end",
+            "speaker": "Narrator",
+            "text": "You’re alive. But what now?",
+            "background": "campfire.png"
+        }
+    ]
+}

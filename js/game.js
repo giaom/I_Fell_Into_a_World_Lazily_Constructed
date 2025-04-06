@@ -1,35 +1,54 @@
-/**
- * Function to go back to the home page, saving the current game state before navigation.
- */
-function goHome() {
-    // Get the current chapter (this example assumes the URL is in the format 'ch1.html')
-    const currentChapter = window.location.pathname.split('/').pop();  // Extracts 'ch1.html'
+let currentSceneId = localStorage.getItem("currentScene") || "start";
+let sceneData = null;
 
-    // Save the current game state (customize the state as necessary, here 'dialogue' is used as an example)
-    saveGameState(currentChapter, { dialogue: 'Player is at a specific point in Chapter 1.' });
+document.addEventListener("DOMContentLoaded", () => {
+    fetch("data/dch1.json")
+        .then(res => res.json())
+        .then(data => {
+            sceneData = data.dialogue;
+            loadScene(currentSceneId);
+        });
 
-    // Navigate back to the home page
-    window.location.href = 'index.html';
+    document.getElementById("nextBtn").addEventListener("click", () => {
+        const scene = getScene(currentSceneId);
+        if (scene && scene.next) {
+            loadScene(scene.next);
+        }
+    });
+});
+
+function getScene(id) {
+    return sceneData.find(d => d.id === id);
 }
 
-/**
- * Function to toggle the pause state and save progress.
- */
-function togglePause() {
-    const isPaused = document.getElementById('pauseOverlay').style.display === 'flex';
+function loadScene(id) {
+    const scene = getScene(id);
+    if (!scene) return;
 
-    if (isPaused) {
-        // Unpause the game (hide the pause overlay)
-        document.getElementById('pauseOverlay').style.display = 'none';
+    localStorage.setItem("currentScene", id);
+    currentSceneId = id;
 
-        // Optionally, load game state (e.g., restore UI or chapter state)
-        loadGameState();
+    const dialogueText = document.getElementById("dialogue-text");
+    const codeBox = document.getElementById("code-snippet");
+    const sceneBg = document.getElementById("scene-bg");
+    const nextBtn = document.getElementById("nextBtn");
+    const choicesBox = document.getElementById("choices");
+
+    dialogueText.innerHTML = scene.speaker ? `<strong>${scene.speaker}:</strong> ${scene.text || ""}` : "";
+    codeBox.textContent = scene.code || "";
+    sceneBg.src = scene.background ? `images/${scene.background}` : "";
+
+    choicesBox.innerHTML = "";
+
+    if (scene.choices) {
+        nextBtn.style.display = "none";
+        scene.choices.forEach(choice => {
+            const btn = document.createElement("button");
+            btn.textContent = choice.text;
+            btn.onclick = () => loadScene(choice.next);
+            choicesBox.appendChild(btn);
+        });
     } else {
-        // Pause the game (show the pause overlay)
-        document.getElementById('pauseOverlay').style.display = 'flex';
-
-        // Save progress when pausing
-        const currentChapter = window.location.pathname.split('/').pop();
-        saveGameState(currentChapter, { dialogue: 'Player paused in Chapter 1 at a certain point.' });
+        nextBtn.style.display = "block";
     }
 }

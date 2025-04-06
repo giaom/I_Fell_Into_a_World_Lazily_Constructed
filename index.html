@@ -2,46 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>I Fell Into a World Lazily Constructed</title>
-
-    <!-- Link to the main stylesheet -->
-    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="UTF-8">
+    <title>Isekai Debugger</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
-    <!-- Main container for the homepage content -->
-    <div class="home-container">
-
-        <!-- Game title displayed at the top -->
-        <h1 class="home-title">I Fell Into a World Lazily Constructed</h1>
-
-        <!-- List of available chapters -->
-        <ul class="chapter-list">
-            <li>
-                <!-- Button to start Chapter 1 -->
-                <button class="chapter-button" onclick="startChapter('ch1.html')">
-                    Chapter 1: Prologue – A Flicker
-                </button>
-            </li>
-            <!-- Future chapters can be added here in a similar way -->
-        </ul>
+    <div class="home-screen">
+        <h1>Isekai Debugger</h1>
+        <button onclick="startChapter('ch1.html')">Start Chapter 1: A Flicker</button>
     </div>
 
-    <!-- JavaScript to handle chapter navigation -->
     <script>
-        /**
-         * Navigates the player to the selected chapter page.
-         * @param {string} page - The filename of the chapter HTML page.
-         */
-        function startChapter(page) {
-            window.location.href = page;
+        function startChapter(chapterUrl) {
+            window.location.href = chapterUrl;
         }
     </script>
-
 </body>
 
 </html>
